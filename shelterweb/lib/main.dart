@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Shelter Web',
+      title: 'shelter web',
       theme: ThemeData(
         primarySwatch: Colors.grey,
       ),
@@ -22,8 +22,7 @@ class MyApp extends StatelessWidget {
       //routes
       initialRoute: "/",
       routes: {
-        '/': (context) =>
-            const HomePage(),
+        '/': (context) => const HomePage(),
       },
       //home: const HomePage(),
     );
