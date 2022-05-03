@@ -14,11 +14,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Shelter Web',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-        primaryColor: Colors.deepPurple
+        primarySwatch: Colors.grey,
       ),
+      debugShowCheckedModeBanner: false,
       home: const HomePage(),
     );
   }
 }
-
