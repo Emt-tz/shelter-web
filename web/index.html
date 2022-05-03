@@ -127,6 +127,8 @@
             scriptTag.type = 'application/javascript';
             document.body.append(scriptTag);
         }
+loadMainDartJs();
+*/
 
         if ('serviceWorker' in navigator) {
             // Service workers are supported. Use them.
@@ -177,6 +179,7 @@
             // Service workers not supported. Just drop the <script> tag.
             loadMainDartJs();
         }
+*/
     </script>
     <script>
         window.onload = function() {
