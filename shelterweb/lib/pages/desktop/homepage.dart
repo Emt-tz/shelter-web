@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors, non_constant_identifier_names, prefer_const_literals_to_create_immutables
 
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
 
@@ -16,6 +18,8 @@ class _DesktopHomePageState extends State<DesktopHomePage> {
   //for the nav search
   final TextEditingController SearchController = TextEditingController();
   bool _navSearchVisibility = false;
+  //guests increment or decrement
+  int guests = 1;
 
   //init
   @override
@@ -36,6 +40,7 @@ class _DesktopHomePageState extends State<DesktopHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Column(
         children: [
           Row(
@@ -251,7 +256,7 @@ class _DesktopHomePageState extends State<DesktopHomePage> {
                 children: [
                   //carousel
                   Container(
-                    height: MediaQuery.of(context).size.height * 0.7,
+                    height: MediaQuery.of(context).size.height * 0.76,
                     width: MediaQuery.of(context).size.width,
                     child: Stack(
                       children: [
@@ -305,6 +310,183 @@ class _DesktopHomePageState extends State<DesktopHomePage> {
                             ),
                           ),
                         ),
+                        //booking calendar widget
+                        Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Container(
+                            padding: EdgeInsets.all(10),
+                            height: 80,
+                            width: MediaQuery.of(context).size.width * 0.9,
+                            decoration: BoxDecoration(
+                              color: Color(0xFFFAFAFA),
+                              borderRadius: BorderRadius.circular(60),
+                            ),
+                            child: Container(
+                              padding: EdgeInsets.only(
+                                  top: 1, bottom: 1, left: 5, right: 5),
+                              height: 100,
+                              width: MediaQuery.of(context).size.width * 0.9,
+                              child: Material(
+                                color: Colors.transparent,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    InkWell(
+                                      hoverColor: Color(0xFFe6e6e6),
+                                      borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(60),
+                                          bottomLeft: Radius.circular(60)),
+                                      onTap: () {},
+                                      child: Container(
+                                        alignment: Alignment.centerRight,
+                                        height: 80,
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.9 *
+                                                0.25,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.only(
+                                              topLeft: Radius.circular(60),
+                                              bottomLeft: Radius.circular(60)),
+                                        ),
+                                        child: TextField(
+                                          decoration: InputDecoration(
+                                            contentPadding: EdgeInsets.all(10),
+                                            prefixIcon: Icon(Icons.search),
+                                            border: OutlineInputBorder(
+                                              borderSide: BorderSide.none,
+                                              borderRadius: BorderRadius.only(
+                                                  topLeft: Radius.circular(30),
+                                                  bottomLeft:
+                                                      Radius.circular(30)),
+                                            ),
+                                            hintText: 'Select a city',
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    VerticalDivider(
+                                      thickness: 2,
+                                      indent: 10,
+                                      endIndent: 10,
+                                    ),
+                                    //check in check out
+                                    InkWell(
+                                      hoverColor: Color(0xFFe6e6e6),
+                                      onTap: () {},
+                                      child: Container(
+                                        height: 80,
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.9 *
+                                                0.25,
+                                        decoration: BoxDecoration(
+                                            // color: Colors.deepPurple[300],
+                                            ),
+                                        child: Row(
+                                          children: [
+                                            Expanded(
+                                                child: Icon(
+                                              Icons.calendar_today,
+                                              size: 18,
+                                            )),
+                                            Expanded(child: Text("Check-in")),
+                                            Expanded(
+                                                child: Icon(Icons.arrow_right)),
+                                            Expanded(child: Text("Check-out")),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    VerticalDivider(
+                                      thickness: 2,
+                                      indent: 10,
+                                      endIndent: 10,
+                                    ),
+                                    //guests and search button
+                                    Expanded(
+                                      child: Container(
+                                        height: 100,
+                                        decoration: BoxDecoration(
+                                          // color: Colors.deepPurple[300],
+                                          borderRadius: BorderRadius.only(
+                                              topRight: Radius.circular(60),
+                                              bottomRight: Radius.circular(60)),
+                                        ),
+                                        child: Row(
+                                          children: [
+                                            Expanded(
+                                              child:
+                                                  Icon(Icons.manage_accounts),
+                                            ),
+                                            Expanded(
+                                              child: Text("Guests"),
+                                            ),
+                                            //add guests or decrease guests
+                                            IconButton(
+                                              splashRadius: 18,
+                                              iconSize: 18,
+                                              onPressed: () {
+                                                guests == 1
+                                                    ? setState(() {
+                                                        guests = 1;
+                                                      })
+                                                    : setState(() {
+                                                        guests = guests - 1;
+                                                      });
+                                              },
+                                              icon: Icon(Icons.remove),
+                                            ),
+                                            SizedBox(
+                                              width: 10,
+                                            ),
+                                            Text("$guests"),
+                                            SizedBox(
+                                              width: 10,
+                                            ),
+                                            IconButton(
+                                              splashRadius: 18,
+                                              iconSize: 18,
+                                              onPressed: () {
+                                                guests >= 1
+                                                    ? setState(() {
+                                                        guests = guests + 1;
+                                                      })
+                                                    : setState(() {
+                                                        guests = 1;
+                                                      });
+                                              },
+                                              icon: Icon(Icons.add),
+                                            ),
+
+                                            Spacer(),
+                                            InkWell(
+                                              hoverColor: Colors.grey[300],
+                                              borderRadius:
+                                                  BorderRadius.circular(30),
+                                              onTap: () {},
+                                              child: Container(
+                                                alignment: Alignment.center,
+                                                height: 100,
+                                                width: 150,
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(30),
+                                                ),
+                                                child: Text("Search"),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        )
                       ],
                     ),
                   ),
