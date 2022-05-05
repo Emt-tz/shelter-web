@@ -165,6 +165,7 @@
         //                 }
         //             });
 
+
         //         // If service worker doesn't succeed in a reasonable amount of time,
         //         // fallback to plaint <script> tag.
         //         setTimeout(() => {
@@ -180,6 +181,18 @@
         //     // Service workers not supported. Just drop the <script> tag.
         //     loadMainDartJs();
         // }
+        // If service worker doesn't succeed in a reasonable amount of time,
+        // fallback to plaint <script> tag.
+        // setTimeout(() => {
+        //             if (!scriptLoaded) {
+        //                 console.warn(
+        //                     'Failed to load app from service worker. Falling back to plain <script> tag.',
+        //                 );
+        //                 loadMainDartJs();
+        //             } else {
+        //                 // Service workers not supported. Just drop the <script> tag.
+        //                 loadMainDartJs();
+        //             }
     </script>
     <!-- Ensure first time loading progress is gone after app loads -->
     <script>
