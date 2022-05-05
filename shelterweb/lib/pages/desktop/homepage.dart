@@ -5,6 +5,9 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
 
+import 'package:shelterweb/widgets/desktop/cities.dart';
+import 'package:shelterweb/widgets/desktop/section_titles.dart';
+
 class DesktopHomePage extends StatefulWidget {
   const DesktopHomePage({Key? key}) : super(key: key);
 
@@ -20,6 +23,8 @@ class _DesktopHomePageState extends State<DesktopHomePage> {
   bool _navSearchVisibility = false;
   //guests increment or decrement
   int guests = 1;
+  //cities view all hover button
+  bool isHover = false;
 
   //init
   @override
@@ -188,7 +193,7 @@ class _DesktopHomePageState extends State<DesktopHomePage> {
                   // menu
                   Theme(
                     data: Theme.of(context).copyWith(
-                      highlightColor: Colors.red,
+                      //highlightColor: Colors.red,
                       splashColor: Colors.transparent,
                     ),
                     child: PopupMenuButton(
@@ -256,12 +261,12 @@ class _DesktopHomePageState extends State<DesktopHomePage> {
                 children: [
                   //carousel
                   Container(
-                    height: MediaQuery.of(context).size.height * 0.76,
+                    height: 568,
                     width: MediaQuery.of(context).size.width,
                     child: Stack(
                       children: [
                         Container(
-                          height: MediaQuery.of(context).size.height * 0.7,
+                          height: 530,
                           width: MediaQuery.of(context).size.width,
                           child: Image(
                             image: NetworkImage(
@@ -270,7 +275,7 @@ class _DesktopHomePageState extends State<DesktopHomePage> {
                           ),
                         ),
                         Container(
-                          height: MediaQuery.of(context).size.height * 0.7,
+                          height: 530,
                           width: MediaQuery.of(context).size.width,
                           decoration: BoxDecoration(
                               color: Colors.white,
@@ -287,9 +292,9 @@ class _DesktopHomePageState extends State<DesktopHomePage> {
                                   ])),
                         ),
                         Container(
-                          padding: EdgeInsets.only(left: 100),
+                          padding: EdgeInsets.only(left: 100,top:150),
                           child: Align(
-                            alignment: Alignment.centerLeft,
+                            alignment: Alignment.topLeft,
                             child: Text(
                               "A better way\nto stay",
                               style: TextStyle(
@@ -300,7 +305,7 @@ class _DesktopHomePageState extends State<DesktopHomePage> {
                           ),
                         ),
                         Container(
-                          padding: EdgeInsets.only(left: 100, top: 250),
+                          padding: EdgeInsets.only(left: 100, top: 150),
                           child: Align(
                             alignment: Alignment.centerLeft,
                             child: Text(
@@ -490,72 +495,305 @@ class _DesktopHomePageState extends State<DesktopHomePage> {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 40),
                   //cities
-                  Container(
-                    height: MediaQuery.of(context).size.height * 0.7,
+                  SizedBox(
+                    height: 768,
                     width: MediaQuery.of(context).size.width,
-                    color: Colors.deepPurple[300],
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Column(
-                              children: [
-                                Container(
-                                    width: MediaQuery.of(context).size.width,
-                                    color: Colors.deepPurple[300]),
-                              ],
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Column(
-                              children: [
-                                Container(
-                                    width: MediaQuery.of(context).size.width,
-                                    color: Colors.deepPurple[300]),
-                                Container(
-                                    width: MediaQuery.of(context).size.width,
-                                    color: Colors.deepPurple[300])
-                              ],
-                            ),
-                            Column(
-                              children: [
-                                Container(
-                                    width: MediaQuery.of(context).size.width,
-                                    color: Colors.deepPurple[300])
-                              ],
-                            ),
-                            Column(
-                              children: [
-                                Container(
-                                    width: MediaQuery.of(context).size.width,
-                                    color: Colors.deepPurple[300]),
-                                Container(
-                                    width: MediaQuery.of(context).size.width,
-                                    color: Colors.deepPurple[300])
-                              ],
-                            )
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Container(
-                                width: MediaQuery.of(context).size.width,
-                                color: Colors.deepPurple[300])
-                          ],
-                        )
-                      ],
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 60),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              DesktopSectionsTitle(
+                                  title: "A world of choice",
+                                  titleColor: Colors.black,
+                                  subTitle:
+                                      "From a room for a night to a loft for as long as you like,\nthere’s a Sonder for every occasion.",
+                                  subTitleColor: Colors.black45),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 30,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Column(
+                                children: [
+                                  DesktopCitiesWidget(
+                                      cityName: "Chicago",
+                                      defaultImage:
+                                          "https://images.sonder.com/image/upload/c_fill,f_auto,q_auto:eco,w_600/v1616791504/catalina/homepage/city_grid/Chicago.png",
+                                      neighbourhoods: 6),
+                                  SizedBox(
+                                    height: 30,
+                                  ),
+                                  DesktopCitiesWidget(
+                                      cityName: "Chicago",
+                                      defaultImage:
+                                          "https://images.sonder.com/image/upload/c_fill,f_auto,q_auto:eco,w_600/v1616791504/catalina/homepage/city_grid/Chicago.png",
+                                      neighbourhoods: 6),
+                                ],
+                              ),
+                              Spacer(),
+                              Column(
+                                children: [
+                                  DesktopCitiesWidget(
+                                      cityName: "Chicago",
+                                      defaultImage:
+                                          "https://images.sonder.com/image/upload/c_fill,f_auto,q_auto:eco,w_600/v1616791504/catalina/homepage/city_grid/Chicago.png",
+                                      neighbourhoods: 6),
+                                  SizedBox(
+                                    height: 30,
+                                  ),
+                                  DesktopCitiesWidget(
+                                      cityName: "Chicago",
+                                      defaultImage:
+                                          "https://images.sonder.com/image/upload/c_fill,f_auto,q_auto:eco,w_600/v1616791504/catalina/homepage/city_grid/Chicago.png",
+                                      neighbourhoods: 6),
+                                ],
+                              ),Spacer(),
+                              Column(
+                                children: [
+                                  DesktopCitiesWidget(
+                                      cityName: "Chicago",
+                                      defaultImage:
+                                          "https://images.sonder.com/image/upload/c_fill,f_auto,q_auto:eco,w_600/v1616791504/catalina/homepage/city_grid/Chicago.png",
+                                      neighbourhoods: 6),
+                                  SizedBox(
+                                    height: 30,
+                                  ),
+                                  DesktopCitiesWidget(
+                                      cityName: "Chicago",
+                                      defaultImage:
+                                          "https://images.sonder.com/image/upload/c_fill,f_auto,q_auto:eco,w_600/v1616791504/catalina/homepage/city_grid/Chicago.png",
+                                      neighbourhoods: 6),
+                                ],
+                              ),
+                              Spacer()
+                            ],
+                          ),
+                          SizedBox(
+                            height: 30,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              InkWell(
+                                borderRadius: BorderRadius.circular(30),
+                                hoverColor: Color(0xFFe6e6e6),
+                                onHover: (val) {
+                                  setState(() {
+                                    isHover = val;
+                                  });
+                                },
+                                onTap: () {},
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  height: 64,
+                                  width: MediaQuery.of(context).size.width * 0.15,
+                                  decoration: BoxDecoration(
+                                    color: isHover
+                                        ? Colors.transparent
+                                        : Color(0xFFFAFAFA),
+                                    borderRadius: BorderRadius.circular(30),
+                                  ),
+                                  child: Text(
+                                    "View all 35+ cities",
+                                    style: TextStyle(
+                                        color: Colors.black87, fontSize: 16),
+                                  ),
+                                ),
+                              )
+                            ],
+                          )
+                        ],
+                      ),
                     ),
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 50),
                   //app advert
                   Container(
-                    height: MediaQuery.of(context).size.height * 0.7,
+                    padding: EdgeInsets.only(left: 80, right: 80,top: 50),
+                    height: 768,
                     width: MediaQuery.of(context).size.width,
-                    color: Colors.deepPurple[300],
+                    color: Color(0xFFFAFAFA),
+                    child: Stack(
+                      children: [
+                        Align(
+                          alignment: Alignment.topRight,
+                            child: Padding(
+                              padding: const EdgeInsets.only(left:500.0),
+                              child: Image(
+                                
+                                height: 650,
+                                  image: NetworkImage(
+                                      "https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/pf-s73-ted-9997-01-mockup_2.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=d5e4553607937bc61364ae6375fef126")),
+                            )),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            DesktopSectionsTitle(
+                              title: "Everything you need\nis just a tap away",
+                              titleColor: Colors.black,
+                              subTitle:
+                                  "From fresh towels to late checkout, our app puts\nyou in control. Your stay,your way.",
+                              subTitleColor: Colors.black45,
+                            ),
+                            SizedBox(
+                              height: 50,
+                            ),
+                            Row(
+                              children: [
+                                Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Icon(
+                                          Icons.chat,
+                                          size: 35,
+                                        ),
+                                        SizedBox(
+                                          width: 20,
+                                        ),
+                                        SelectableText(
+                                            "24/7 in-app\ncustomer service"),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 50,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Icon(
+                                          Icons.wifi,
+                                          size: 35,
+                                        ),
+                                        SizedBox(
+                                          width: 20,
+                                        ),
+                                        SelectableText("One-tap Wifi access"),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(width: 100,),
+                                Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Icon(
+                                          Icons.my_location,
+                                          size: 35,
+                                        ),
+                                        SizedBox(
+                                          width: 20,
+                                        ),
+                                        SelectableText("Neighborhood guides"),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 50,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Icon(
+                                          Icons.watch,
+                                          size: 35,
+                                        ),
+                                        SizedBox(
+                                          width: 20,
+                                        ),
+                                        SelectableText(
+                                            "Request late checkout"),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            Spacer(),
+                            Row(
+                              children: [
+                                InkWell(
+                                  onTap: () {},
+                                  child: Container(
+                                    width: 140,
+                                    height: 150,
+                                    decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                          image: NetworkImage(
+                                              "https://images.sonder.com/image/upload/c_fill,f_auto,q_auto:eco,w_400/v1616628024/catalina/homepage/tech_value_props/download_apple.png"),
+                                          fit: BoxFit.fitWidth),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 50,
+                                ),
+                                InkWell(
+                                  onTap: () {},
+                                  child: Container(
+                                    width: 150,
+                                    height: 150,
+                                    decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                          image: NetworkImage(
+                                              "https://images.sonder.com/image/upload/c_fill,f_auto,q_auto:eco,w_450/v1616628024/catalina/homepage/tech_value_props/download_android.png"),
+                                          fit: BoxFit.fitWidth),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Spacer(),
+                            Divider(
+                              thickness: 2,
+                              height: 2,
+                              color: Colors.black45,
+                            ),
+                            SizedBox(
+                              height: 30,
+                            ),
+                            Row(
+                              children: [
+                                Column(
+                                  children: [
+                                    SelectableText("The New York Times"),
+                                    SelectableText(
+                                        "The next billion-dollar\nstartups 2019")
+                                  ],
+                                ),
+                                Spacer(),
+                                Column(
+                                  children: [
+                                    SelectableText("The New York Times"),
+                                    SelectableText(
+                                        "The next billion-dollar\nstartups 2019")
+                                  ],
+                                ),
+                                Spacer(),
+                                Column(
+                                  children: [
+                                    SelectableText("The New York Times"),
+                                    SelectableText(
+                                        "The next billion-dollar\nstartups 2019")
+                                  ],
+                                ),
+                              ],
+                            ),
+                            Spacer()
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                   const SizedBox(height: 20),
                   //video section
