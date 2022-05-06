@@ -104,8 +104,7 @@
         if ('serviceWorker' in navigator) {
             // Service workers are supported. Use them.
             window.addEventListener('load', function() {
-                var el = document.getElementsByClassName('loading')[0];
-                el.remove();
+                
                 // Wait for registration to finish before dropping the <script> tag.
                 // Otherwise, the browser will load the script multiple times,
                 // potentially different versions.
@@ -152,6 +151,8 @@
             // Service workers not supported. Just drop the <script> tag.
             loadMainDartJs();
         }
+var el = document.getElementsByClassName('loading')[0];
+                el.remove();
     </script>
     <!-- Ensure first time loading progress is gone after app loads
     <script>
