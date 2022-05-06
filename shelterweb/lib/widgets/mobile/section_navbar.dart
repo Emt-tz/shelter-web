@@ -19,79 +19,77 @@ class _MobileNavSectionState extends State<MobileNavSection> {
   Widget build(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         //nav bar
         Container(
           padding: const EdgeInsets.only(left: 10, right: 10),
           height: 64,
           // width: MediaQuery.of(context).size.width*0.5,
-          child: Expanded(
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                // logo
-                widget.navSearchVisibility
-                    ? const SizedBox()
-                    : const Text(
-                        "Shelter on Demand",
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w900),
-                      ),
-                widget.navSearchVisibility
-                    ? const SizedBox()
-                    : const SizedBox(
-                        width: 0,
-                      ),
-                // search
-                Visibility(
-                  visible: widget.navSearchVisibility,
-                  child: InkWell(
-                    borderRadius: BorderRadius.circular(30),
-                    onTap: () {},
-                    child: SizedBox(
-                      height: 50,
-                      width: MediaQuery.of(context).size.width * 0.5,
-                      child: TextFormField(
-                        decoration: const InputDecoration(
-                          contentPadding: EdgeInsets.all(10),
-                          prefixIcon: Icon(Icons.search),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(30)),
-                          ),
-                          hintText: 'Select a city',
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              // logo
+              widget.navSearchVisibility
+                  ? const SizedBox()
+                  : const Text(
+                      "Shelter on Demand",
+                      style: TextStyle(
+                          fontSize: 20, fontWeight: FontWeight.w900),
+                    ),
+              widget.navSearchVisibility
+                  ? const SizedBox()
+                  : const SizedBox(
+                      width: 0,
+                    ),
+              // search
+              Visibility(
+                visible: widget.navSearchVisibility,
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(30),
+                  onTap: () {},
+                  child: SizedBox(
+                    height: 50,
+                    width: MediaQuery.of(context).size.width * 0.5,
+                    child: TextFormField(
+                      decoration: const InputDecoration(
+                        contentPadding: EdgeInsets.all(10),
+                        prefixIcon: Icon(Icons.search),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(30)),
                         ),
+                        hintText: 'Select a city',
                       ),
                     ),
                   ),
                 ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Visibility(
-                  visible: widget.navSearchVisibility,
-                  child: InkWell(
-                    hoverColor: Colors.grey[300],
-                    borderRadius: BorderRadius.circular(30),
-                    onTap: () {},
-                    child: Container(
-                      alignment: Alignment.center,
-                      height: 45,
-                      width: MediaQuery.of(context).size.width * 0.4,
-                      decoration: BoxDecoration(
-                        color: Colors.black,
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      child: const Text(
-                        "Search",
-                        style: TextStyle(color: Colors.white),
-                      ),
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              Visibility(
+                visible: widget.navSearchVisibility,
+                child: InkWell(
+                  hoverColor: Colors.grey[300],
+                  borderRadius: BorderRadius.circular(30),
+                  onTap: () {},
+                  child: Container(
+                    alignment: Alignment.center,
+                    height: 45,
+                    width: MediaQuery.of(context).size.width * 0.4,
+                    decoration: BoxDecoration(
+                      color: Colors.black,
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    child: const Text(
+                      "Search",
+                      style: TextStyle(color: Colors.white),
                     ),
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
         //spacer

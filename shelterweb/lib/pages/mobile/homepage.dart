@@ -61,7 +61,7 @@ class _MobileHomePageState extends State<MobileHomePage> {
                 children: [
                   //carousel
                   SizedBox(
-                    height: 580,
+                    height: 550,
                     width: MediaQuery.of(context).size.width,
                     child: const MobileCarouselSection(),
                   ),
@@ -75,7 +75,7 @@ class _MobileHomePageState extends State<MobileHomePage> {
                   //app advert
                   Container(
                     padding:EdgeInsets.all(20),
-                      height: 1100,
+                      height: 1170,
                       width: MediaQuery.of(context).size.width,
                       color: Color(0xFFFAFAFA),
                       child: MobileAdvertSection()),
@@ -90,7 +90,7 @@ class _MobileHomePageState extends State<MobileHomePage> {
                   const SizedBox(height: 100),
                   //testimonial section
                   SizedBox(
-                    height: 420,
+                    height: 470,
                     width: MediaQuery.of(context).size.width,
                     //color: Colors.deepPurple[300],
                     child: MobileTestimonialSection(controller: controller),
