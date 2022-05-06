@@ -13,7 +13,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   //responsive break points
   final double desktop = 1920;
-  final double tablet = 840;
+  final double tablet = 1400;
   final double mobile = 480;
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class _HomePageState extends State<HomePage> {
       if(constraints.maxWidth<=mobile){
         return MobileHomePage();
       }else if (constraints.maxWidth>mobile && constraints.maxWidth<=tablet){
-        return TabletHomePage();
+        return Center(child: Text("Not optimized for Tablets"));
       }else{
         return DesktopHomePage();
       }

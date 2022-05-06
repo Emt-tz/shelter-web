@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class DesktopCitiesWidget extends StatefulWidget {
+class MobileCitiesWidget extends StatefulWidget {
   final String cityName;
   final String defaultImage;
   final int neighbourhoods;
-  const DesktopCitiesWidget(
+  const MobileCitiesWidget(
       {Key? key,
       required this.cityName,
       required this.defaultImage,
@@ -12,10 +12,10 @@ class DesktopCitiesWidget extends StatefulWidget {
       : super(key: key);
 
   @override
-  _DesktopCitiesWidgetState createState() => _DesktopCitiesWidgetState();
+  _MobileCitiesWidgetState createState() => _MobileCitiesWidgetState();
 }
 
-class _DesktopCitiesWidgetState extends State<DesktopCitiesWidget> {
+class _MobileCitiesWidgetState extends State<MobileCitiesWidget> {
   double elevation = 4.0;
   double scale = 1.0;
   Offset translate = Offset(0, 0);
@@ -29,19 +29,19 @@ class _DesktopCitiesWidgetState extends State<DesktopCitiesWidget> {
           onTap: () {},
           onHover: (value) {
            
-            if (value) {
-              setState(() {
-                elevation = 1.0;
-                scale =1.05;
-                translate = Offset(2, 2);
-              });
-            } else {
-              setState(() {
-                elevation = 1.0;
-                scale = 1.0;
-                translate = Offset(0, 0);
-              });
-            }
+            // if (value) {
+            //   setState(() {
+            //     elevation = 1.0;
+            //     scale =1.05;
+            //     translate = Offset(2, 2);
+            //   });
+            // } else {
+            //   setState(() {
+            //     elevation = 1.0;
+            //     scale = 1.0;
+            //     translate = Offset(0, 0);
+            //   });
+            // }
           },
           child: Transform.translate(
             offset: translate,
@@ -49,7 +49,7 @@ class _DesktopCitiesWidgetState extends State<DesktopCitiesWidget> {
               scale: scale,
               child: Container(
                 height: 200,
-                width: 400,
+                width: MediaQuery.of(context).size.width*0.9,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                       image: NetworkImage(widget.defaultImage),

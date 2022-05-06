@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shelterweb/pages/homepage.dart';
 import 'package:url_strategy/url_strategy.dart';
 
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
       title: 'shelter web',
       theme: ThemeData(
         primarySwatch: Colors.grey,
+        textTheme: GoogleFonts.ubuntuTextTheme(Theme.of(context).textTheme),
       ),
       debugShowCheckedModeBanner: false,
       //routes
