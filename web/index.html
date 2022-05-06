@@ -99,9 +99,9 @@
             scriptTag.type = 'application/javascript';
             document.body.append(scriptTag);
         }
-        // loadMainDartJs();
+         loadMainDartJs();
 
-        if ('serviceWorker' in navigator) {
+        /*if ('serviceWorker' in navigator) {
             // Service workers are supported. Use them.
             window.addEventListener('load', function() {
                 var el = document.getElementsByClassName('loading')[0];
@@ -151,7 +151,7 @@
         } else {
             // Service workers not supported. Just drop the <script> tag.
             loadMainDartJs();
-        }
+        }*/
     </script>
     <!-- Ensure first time loading progress is gone after app loads
     <script>
