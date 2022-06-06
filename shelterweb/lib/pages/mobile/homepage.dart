@@ -53,90 +53,87 @@ class _MobileHomePageState extends State<MobileHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return RefreshIndicator(
-      onRefresh: refreshPage(),
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        body: Column(
-          children: [
-            //Nav
-            MobileNavSection(navSearchVisibility: _navSearchVisibility),
-            //start of main page
-            Expanded(
-              child: SingleChildScrollView(
-                controller: controller,
-                child: Column(
-                  children: [
-                    //carousel
-                    SizedBox(
-                      height: 550,
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Column(
+        children: [
+          //Nav
+          MobileNavSection(navSearchVisibility: _navSearchVisibility),
+          //start of main page
+          Expanded(
+            child: SingleChildScrollView(
+              controller: controller,
+              child: Column(
+                children: [
+                  //carousel
+                  SizedBox(
+                    height: 550,
+                    width: MediaQuery.of(context).size.width,
+                    child: const MobileCarouselSection(),
+                  ),
+                  const SizedBox(height: 40),
+                  //cities
+                  SizedBox(
+                      height: 858,
                       width: MediaQuery.of(context).size.width,
-                      child: const MobileCarouselSection(),
-                    ),
-                    const SizedBox(height: 40),
-                    //cities
-                    SizedBox(
-                        height: 858,
-                        width: MediaQuery.of(context).size.width,
-                        child: const MobileCitiesSection()),
-                    const SizedBox(height: 50),
-                    //app advert
-                    Container(
-                        padding: EdgeInsets.all(20),
-                        height: 1170,
-                        width: MediaQuery.of(context).size.width,
-                        color: Color(0xFFFAFAFA),
-                        child: MobileAdvertSection()),
-                    const SizedBox(height: 100),
-                    //video section
-                    Container(
-                      height: 670,
-                      width: MediaQuery.of(context).size.width,
-                      color: Color(0xFFFAFAFA),
-                      child: MobileVideoSection(),
-                    ),
-                    const SizedBox(height: 100),
-                    //testimonial section
-                    SizedBox(
-                      height: 470,
-                      width: MediaQuery.of(context).size.width,
-                      //color: Colors.deepPurple[300],
-                      child: MobileTestimonialSection(controller: controller),
-                    ),
-                    const SizedBox(height: 50),
-                    //blog section
-                    Container(
-                        padding: EdgeInsets.all(20),
-                        height: 568,
-                        width: MediaQuery.of(context).size.width,
-                        color: Color(0xFFFAFAFA),
-                        child: MobileBlogSection()),
-                    const SizedBox(height: 50),
-                    //footer section
-                    Container(
+                      child: const MobileCitiesSection()),
+                  const SizedBox(height: 50),
+                  //app advert
+                  Container(
                       padding: EdgeInsets.all(20),
-                      height: MediaQuery.of(context).size.height * 0.6,
+                      height: 1170,
                       width: MediaQuery.of(context).size.width,
                       color: Color(0xFFFAFAFA),
-                      child: MobileFooterSection(),
-                    ),
-                  ],
-                ),
+                      child: MobileAdvertSection()),
+                  const SizedBox(height: 100),
+                  //video section
+                  Container(
+                    height: 670,
+                    width: MediaQuery.of(context).size.width,
+                    color: Color(0xFFFAFAFA),
+                    child: MobileVideoSection(),
+                  ),
+                  const SizedBox(height: 100),
+                  //testimonial section
+                  SizedBox(
+                    height: 470,
+                    width: MediaQuery.of(context).size.width,
+                    //color: Colors.deepPurple[300],
+                    child: MobileTestimonialSection(controller: controller),
+                  ),
+                  const SizedBox(height: 50),
+                  //blog section
+                  Container(
+                      padding: EdgeInsets.all(20),
+                      height: 568,
+                      width: MediaQuery.of(context).size.width,
+                      color: Color(0xFFFAFAFA),
+                      child: MobileBlogSection()),
+                  const SizedBox(height: 50),
+                  //footer section
+                  Container(
+                    padding: EdgeInsets.all(20),
+                    height: MediaQuery.of(context).size.height * 0.6,
+                    width: MediaQuery.of(context).size.width,
+                    color: Color(0xFFFAFAFA),
+                    child: MobileFooterSection(),
+                  ),
+                ],
               ),
-            )
-          ],
-        ),
-        // This is our back-to-top button
-        floatingActionButton: _showBackToTopButton == false
-            ? null
-            : FloatingActionButton(
-                onPressed: _scrollToTop,
-                child: const Icon(
-                  Icons.arrow_upward,
-                  color: Colors.white,
-                ),
-              ),
+            ),
+          )
+        ],
       ),
+      // This is our back-to-top button
+      floatingActionButton: _showBackToTopButton == false
+          ? null
+          : FloatingActionButton(
+              onPressed: _scrollToTop,
+              child: const Icon(
+                Icons.arrow_upward,
+                color: Colors.white,
+              ),
+            ),
     );
   }
 }
