@@ -19,7 +19,7 @@ class _HomePageState extends State<HomePage> {
       if(constraints.maxWidth<=mobile){
         return MobileHomePage();
       }else if (constraints.maxWidth>mobile && constraints.maxWidth<=tablet){
-        return Center(child: Text("Not optimized for Tablets"));
+        return DesktopHomePage();
       }else{
         return DesktopHomePage();
       }
